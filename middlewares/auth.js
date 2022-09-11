@@ -14,7 +14,7 @@ exports.auth = async function (req, res, next) {
         return res.status(401).json(Error("No token ,authentication denied"));
     }
     try {
-        const decoded = jwt.verify(token, process.env.SECRET);
+        const decoded = jwt.verify(token, "SECRET123");
         console.log(decoded);
         req.user = await User.findById(decoded.id);
         
